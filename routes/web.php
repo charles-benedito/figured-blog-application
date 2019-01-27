@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('add','PostController@create');
-Route::post('add','PostController@store');
+Route::get('post/create','PostController@create');
+Route::post('post/store','PostController@store');
 Route::get('post','PostController@index');
-Route::get('edit/{id}','PostController@edit');
-Route::post('edit/{id}','PostController@update');
-Route::delete('{id}','PostController@destroy');
+Route::get('post/{id}','PostController@edit');
+Route::post('post/{id}','PostController@update');
+Route::delete('post/{id}','PostController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
