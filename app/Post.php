@@ -13,4 +13,9 @@ class Post extends Eloquent
     protected $fillable = [
         'user_id', 'title', 'text', 'created_at'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

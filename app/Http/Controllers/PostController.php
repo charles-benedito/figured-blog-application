@@ -14,9 +14,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required',
+            'title' => 'required',
+            'text' => 'required',
+        ]);
+
         $post=new Post();
-        //user_id
-        //created_at
+        $post->user_id = $request->get('user_id');
         $post->title = $request->get('title');
         $post->text = $request->get('text');
         $post->save();
@@ -35,9 +40,12 @@ class PostController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required',
+        ]);
+
         $post= Post::find($id);
-        //user_id
-        //created_at
         $post->title = $request->get('title');
         $post->text = $request->get('text');
         $post->save();

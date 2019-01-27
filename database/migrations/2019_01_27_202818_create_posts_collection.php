@@ -24,7 +24,7 @@ class CreatePostsCollection extends Migration
             // user_id
             $collection->string('title');
             $collection->text('text');
-            $collection->timestamp('created_at');
+            $collection->timestamp();
         });
     }
 
