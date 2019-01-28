@@ -12,16 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('public/index');
 });
 
-Route::get('post/create','PostController@create');
-Route::post('post/store','PostController@store');
-Route::get('post','PostController@index');
-Route::get('post/{id}','PostController@edit');
-Route::post('post/{id}','PostController@update');
-Route::delete('post/{id}','PostController@destroy');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('Dashboard');
+
+Route::get('/dashboard/post/','PostController@index');
+Route::get('/dashboard/post/create','PostController@create');
+Route::post('/dashboard/post/store','PostController@store');
+Route::get('/dashboard/post/{id}','PostController@edit');
+Route::post('/dashboard/post/{id}','PostController@update');
+Route::delete('/dashboard/post/{id}','PostController@destroy');
+

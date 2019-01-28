@@ -7,9 +7,14 @@ use App\Post;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
-        return view('postcreate');
+        return view('dashboard/post/create');
     }
 
     public function store(Request $request)
@@ -25,18 +30,19 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->text = $request->get('text');
         $post->save();
-        return redirect('post')->with('success', 'Added with success');
+        return redirect('dashboard/post')->with('success', 'Added with success');
     }
 
     public function index()
     {
         $posts=Post::all();
-        return view('postindex',compact('posts'));
+        return view('dashboard/post/index',compact('posts'));
     }
+
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('postedit',compact('post','id'));
+        return view('dashboard/post/edit',compact('post','id'));
     }
     public function update(Request $request, $id)
     {
@@ -49,12 +55,12 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->text = $request->get('text');
         $post->save();
-        return redirect('post')->with('success', 'Update with success');
+        return redirect('dashboard/post')->with('success', 'Update with success');
     }
     public function destroy($id)
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('post')->with('success','Deleted with success');
+        return redirect('dashboard/post')->with('success','Deleted with success');
     }
 }
