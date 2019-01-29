@@ -12,9 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('public/index');
+    return view('blog/index');
 });
-
+Route::get('/post', function () {
+    return view('blog/index');
+});
 
 Auth::routes();
 
