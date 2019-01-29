@@ -52,7 +52,7 @@
         </div>
     </footer>
 
-    <script src="/js/app.j"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
